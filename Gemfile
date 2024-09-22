@@ -8,6 +8,8 @@ gem 'pagy'
 gem 'sidekiq'
 gem 'httparty' 
 gem 'rspec-rails', group: [:development, :test]
+gem 'pagy'
+gem 'jbuilder'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+    include Pagy::Backend
 
     def autherize_request
         header=request.headers['Authorization']
