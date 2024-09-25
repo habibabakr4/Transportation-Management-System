@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# Handles driver signup and login actions
 class DriversController < ApplicationController
   def signup
-    driver=Driver.new(driver_params)
+    driver = Driver.new(driver_params)
 
     if driver.save
       token = JwtService.encode(driver_id: driver.id)
-      render json: { token: token, message: 'Driver created successfully' }, status: :created
+      render json: { token:, message: 'Driver created successfully' }, status: :created
     else
       render json: { errors: driver.errors.full_messages }, status: :unprocessable_entity
     end
@@ -15,11 +18,10 @@ class DriversController < ApplicationController
 
     if driver&.authenticate(params[:password])
       token = JwtService.encode(driver_id: driver.id)
-      render json: { token: token, message: 'Login successful' }, status: :ok
+      render json: { token:, message: 'Login successful' }, status: :ok
     else
-      render json: { error: 'Invalid email or password' }, status: :unauthorized
+      render json: { errors: ['Invalid email or password'] }, status: :unauthorized
     end
-    
   end
 
   private
